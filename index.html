@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AI Work Item Assistant</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="lib/SDK.min.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>AI Work Item Assistant</h1>
+            <p class="subtext">
+                Turn meeting notes or rough ideas into structured Azure DevOps work items.
+            </p>
+        </div>
+
+        <div class="top-grid">
+            <div class="card composer-card">
+                <div class="field">
+                    <label for="witType">Work item type</label>
+                    <select id="witType">
+                        <option>Epic</option>
+                        <option>Feature</option>
+                        <option>Product Backlog Item</option>
+                        <option>Bug</option>
+                        <option>Task</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="notes">Notes / Meeting text</label>
+                    <textarea id="notes" rows="10" placeholder="Paste notes here..."></textarea>
+                    <div class="helper-row">
+                        <span id="charCount">0 characters</span>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="mode">Detail level</label>
+                    <select id="mode">
+                        <option>Standard</option>
+                        <option>Detailed</option>
+                        <option>Concise</option>
+                    </select>
+                </div>
+
+                <div class="action-row">
+                    <button id="btnTestCors" class="btn btn-secondary">Test CORS</button>
+                    <button id="btnUpload" class="btn btn-secondary">Attach files</button>
+                    <button id="btnRegenerate" class="btn btn-secondary">Regenerate</button>
+                    <button id="btnGenerate" class="btn btn-primary">Generate</button>
+                    <button id="btnCreate" class="btn btn-primary" disabled>Create Work Item</button>
+                </div>
+
+                <div id="status" class="status">Ready.</div>
+            </div>
+
+            <div class="card tips-card">
+                <h3>Tips</h3>
+                <p>Paste goals, scope, user problem, constraints, dependencies, and timelines.</p>
+                <p>AI-generated drafts should be reviewed before saving.</p>
+            </div>
+        </div>
+
+        <div class="card ideas-card">
+            <div class="section-header">
+                <h2>Ideas</h2>
+                <p>Generated suggestions based on the notes you provide.</p>
+            </div>
+            <div id="ideasList" class="ideas-list">
+                <div class="empty-state">No ideas generated yet.</div>
+            </div>
+        </div>
+
+        <div class="bottom-grid">
+            <div class="card preview-card">
+                <div class="section-header">
+                    <h2>Preview</h2>
+                </div>
+
+                <div class="preview-block">
+                    <label>Title</label>
+                    <div id="prevTitle" class="preview-value"></div>
+                </div>
+
+                <div class="preview-block">
+                    <label>Description</label>
+                    <div id="prevDesc" class="preview-value preview-description"></div>
+                </div>
+
+                <div class="preview-block">
+                    <label>Acceptance Criteria</label>
+                    <ul id="prevAc"></ul>
+                </div>
+
+                <div class="preview-block">
+                    <label>Tasks</label>
+                    <ul id="prevTasks"></ul>
+                </div>
+
+                <div class="preview-block">
+                    <label>Tags</label>
+                    <div id="prevTags" class="preview-value"></div>
+                </div>
+            </div>
+
+            <div class="card api-card">
+                <div class="section-header">
+                    <h2>API Response</h2>
+                </div>
+                <pre id="apiResponse"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
