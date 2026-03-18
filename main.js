@@ -6,7 +6,7 @@ VSS.init({
 VSS.ready(function () {
     console.log("Azure DevOps SDK Ready");
 
-    const BASE_URL = "https://ai-aca-agt-prj0067566-wrkitm-bkd.orangeglacier-f13d9e59.eastus.azurecontainerapps.io";
+    const BASE_URL = "";
     const GENERATE_URL = `${BASE_URL}/generate`;
     const TEST_CORS_URL = `${BASE_URL}/cors-test`;
 
